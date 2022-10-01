@@ -1,0 +1,22 @@
+Package: lab06
+Type: Package
+Title: Solve the knapsack problem
+Version: 1.0
+Date: 2022-10-01
+Authors@R: 
+    c(person("Shipeng", "Liu", email = "shili506@student.liu.se",
+    role = c("aut", "cre")),
+    person("Jin", "Yan", email = "jinya425@student.liu.se", 
+    role = "aut"))
+Maintainer: Shipeng Liu <tsunami70510954@gmail.com>
+Description: The package contain three different functions for solving what is called the knapsack problem.
+License: GPL-3
+Encoding: UTF-8
+LazyData: false
+RoxygenNote: 7.2.1
+Suggests: 
+    knitr,
+    rmarkdown,
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
+VignetteBuilder: knitr

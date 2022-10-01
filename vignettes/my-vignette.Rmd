@@ -1,0 +1,93 @@
+---
+title: "lab06"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{lab06}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(lab06)
+###Raw Data
+
+RNGversion(min(as.character(getRversion()),"3.5.3"))
+##old sampler used for backward compatibility
+## suppressWarnings() can be used so that the above warning is not displayed
+set.seed(42, kind = "Mersenne-Twister", normal.kind = "Inversion")
+n <- 2000
+knapsack_objects <-
+  data.frame(
+    w=sample(1:4000, size = n, replace = TRUE),
+    v=runif(n = n, 0, 10000)
+  )
+
+```
+
+# Brute force search
+```{r}
+#`brute_force_knapsack()`solve the knapsack problem by brute force
+#Question How much time does it takes to run the algorithm for n = 16 objects?
+
+#cost of time
+timestart<-Sys.time()
+
+#solve the knapsack problem
+brute_force_knapsack(x = knapsack_objects[1:16,], W = 10000)
+
+#running time
+timeend<-Sys.time()
+runningtime<-timeend-timestart
+print(runningtime)
+
+```
+
+# Dynamic programming
+```{r}
+#`knapsack_dynamic()`solve the knapsack problem by dynamic programming
+#Question How much time does it takes to run the algorithm for n = 500 objects?
+
+#cost of time
+timestart<-Sys.time()
+
+#solve the knapsack problem
+knapsack_dynamic(x = knapsack_objects[1:500,], W = 3500)
+
+#running time
+timeend<-Sys.time()
+runningtime<-timeend-timestart
+print(runningtime)
+
+```
+
+# Greedy heuristic
+```{r}
+#`greedy_knapsack()`solve the knapsack problem by greedy heuristic
+#Question How much time does it takes to run the algorithm for n = 1000000 objects?
+
+n <- 1000000
+knapsack_objects <-
+  data.frame(
+    w=sample(1:4000, size = n, replace = TRUE),
+    v=runif(n = n, 0, 10000)
+  )
+
+#cost of time
+timestart<-Sys.time()
+
+#solve the knapsack problem
+knapsack_dynamic(x = knapsack_objects, W = 10)
+
+#running time
+timeend<-Sys.time()
+runningtime<-timeend-timestart
+print(runningtime)
+
+```
