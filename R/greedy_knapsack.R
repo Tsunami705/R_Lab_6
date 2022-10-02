@@ -27,22 +27,24 @@ function(x,W){
   stopifnot(all(x>0))
 
   #choose items in terms of value to weight ratio
-  x$r=x$v/x$w
+  value=x$v
+  weight=x$w
+  ratio=value/weight
 
-  corder=order(x$r,decreasing = TRUE)
+  corder=order(ratio,decreasing = TRUE)
   curr_value=0
   curr_weight=0
   i=1
 
   while(curr_weight<=W){
-    curr_weight=curr_weight+x$w[corder[i]]
-    curr_value=curr_value+x$v[corder[i]]
+    curr_weight=curr_weight+weight[corder[i]]
+    curr_value=curr_value+value[corder[i]]
     i=i+1
   }
 
   itemlist=corder[1:(i-2)]
-  curr_weight=curr_weight-x$w[corder[i-1]]
-  curr_value=curr_value-x$v[corder[i-1]]
+  curr_weight=curr_weight-weight[corder[i-1]]
+  curr_value=curr_value-value[corder[i-1]]
 
   return(list("value"=curr_value,"elements"=itemlist))
 }

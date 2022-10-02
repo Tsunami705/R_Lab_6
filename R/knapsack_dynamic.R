@@ -31,18 +31,22 @@ function(x,W){
   #state/initialization
   #create 2d_array
   dp_array<-matrix(0,nrow=lens+1,ncol=W+1)
+  value=x$v
+  weight=x$w
 
   #state transition function
   #Fill in row by row, not column by column
   for(i in 2:lens+1){
     for(j in 2:W+1){
-      if(j>=x$w[i-1]){
-        dp_array[i,j]=max(dp_array[i-1,j],dp_array[i-1,j-x$w[i-1]]+x$v[i-1])
-      }else if(j<x$w[i-1]){
+      if(j>=weight[i-1]){
+        dp_array[i,j]=max(dp_array[i-1,j],dp_array[i-1,j-weight[i-1]]+value[i-1])
+      }else{
         dp_array[i,j]=dp_array[i-1,j]
       }
     }
   }
+
+  valueresult=dp_array[lens+1,W+1]
 
   #find the path
 
@@ -51,13 +55,13 @@ function(x,W){
   j=W+1
   while(dp_array[i,j] != 0){
     if(dp_array[i,j]>dp_array[i-1,j]){
-      path=c(path,i-1)
-      j=j-x$w[i-1]
+      path=append(path,i-1)
+      j=j-weight[i-1]
       i=i-1
     }else{
       i=i-1
     }
   }
 
-  return(list("value"=dp_array[lens+1,W+1],"elements"=path))
+  return(list("value"=valueresult,"elements"=path))
 }

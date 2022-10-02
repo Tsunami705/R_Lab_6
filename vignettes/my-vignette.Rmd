@@ -67,6 +67,7 @@ print(runningtime)
 
 ```
 
+
 # Greedy heuristic
 ```{r}
 #`greedy_knapsack()`solve the knapsack problem by greedy heuristic
@@ -91,3 +92,8 @@ runningtime<-timeend-timestart
 print(runningtime)
 
 ```
+
+Question What performance gain could you get by trying to improving your code?
+Improve the running time when the dimension of x are the same
+Improve the time complexity (Brute force search is O(2^n),Dynamic programming is O(n*m) and Greedy heuristic is O(nlogn))
+Save more memory
