@@ -16,6 +16,7 @@ knitr::opts_chunk$set(
 
 ```{r setup}
 library(lab06)
+library(parallel)
 ###Raw Data
 
 RNGversion(min(as.character(getRversion()),"3.5.3"))
@@ -48,6 +49,9 @@ runningtime<-timeend-timestart
 print(runningtime)
 
 ```
+
+Question What performance gain could you get by parallelizing brute force search?
+when n = 22,Brute force search spend 12 sec,and if we use parallel computing,it will spend only around half of it.
 
 # Dynamic programming
 ```{r}
