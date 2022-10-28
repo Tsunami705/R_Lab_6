@@ -38,7 +38,7 @@ function(x,W,parallel=FALSE){
     i=i+1
     binary_num=as.numeric(intToBits(i))
     binary_num=binary_num[1:n]
-    the_weight=sum(binary_num*x$w)
+    the_weight=sum(binary_num*x$w,na.rm = TRUE)
     if(the_weight<=W){
       the_value=sum(binary_num*x$v)
       if(the_value>max_value){

@@ -98,6 +98,9 @@ print(runningtime)
 ```
 
 Question What performance gain could you get by trying to improving your code?
-Improve the running time when the dimension of x are the same
+
+This time I add "na.rm = TRUE" into "the_weight=sum(binary_num*x$w)",so it eventually became "the_weight=sum(binary_num*x$w,na.rm = TRUE)". This way, the function would do less work, since I give more information about the problem. On the condition that the input is "x = knapsack_objects[1:23,]", the running time reduces from 5550ms to 5200ms.
+
 Improve the time complexity (Brute force search is O(2^n),Dynamic programming is O(n*m) and Greedy heuristic is O(nlogn))
-Save more memory
+
+
